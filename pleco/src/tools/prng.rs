@@ -1,7 +1,7 @@
 //! Contains the Pseudo-random number generator. Used for generating random `Board`s and
 //! `BitBoard`s.
 
-use std::mem::transmute;
+use core::mem::transmute;
 
 /// Object for generating pseudo-random numbers.
 pub struct PRNG {

@@ -9,38 +9,56 @@
 //! [`CastlingRights`]: castle_rights/struct.Castling.html
 //! [`PieceLocations`]: piece_locations/struct.Eval.html
 
-use std::cmp::{max, min, PartialEq};
-use std::hint::unreachable_unchecked;
-use std::option::*;
-use std::{char, fmt, num};
+use core::{
+    char,
+    cmp::{max, min, PartialEq},
+    fmt,
+    hint::unreachable_unchecked,
+    num,
+    option::*,
+};
 
+use ::alloc::format;
+use ::alloc::{string::{String, ToString}, vec::Vec};
+
+#[cfg(feature = "std")]
 use rand;
 
+#[cfg(feature = "std")]
 use bot_prelude::AlphaBetaSearcher;
-use core::bitboard::BitBoard;
-use core::masks::*;
-use core::mono_traits::*;
-use core::move_list::{MoveList, ScoringMoveList};
-use core::piece_move::{BitMove, MoveType};
-use core::score::*;
-use core::sq::{NO_SQ, SQ};
-use core::*;
-use helper::prelude::*;
-use helper::Helper;
-use tools::pleco_arc::{Arc, UniqueArc};
-use tools::prng::PRNG;
-use tools::{PreFetchable, Searcher};
+use crate::core::{
+    bitboard::BitBoard,
+    masks::*,
+    mono_traits::*,
+    move_list::{MoveList, ScoringMoveList},
+    piece_move::{BitMove, MoveType},
+    score::*,
+    sq::{NO_SQ, SQ},
+    *,
+};
+use crate::helper::{prelude::*, Helper};
+use crate::tools::{
+    pleco_arc::{Arc, UniqueArc},
+    prng::PRNG,
+    PreFetchable,
+};
 
-use self::board_state::BoardState;
-use self::castle_rights::Castling;
-use self::movegen::{Legal, MoveGen, PseudoLegal};
-use self::piece_locations::PieceLocations;
+#[cfg(feature = "std")]
+use crate::tools::Searcher;
+
+use self::{
+    board_state::BoardState,
+    castle_rights::Castling,
+    movegen::{Legal, MoveGen, PseudoLegal},
+    piece_locations::PieceLocations,
+};
 
 pub mod board_state;
 pub mod castle_rights;
 pub mod fen;
 pub mod movegen;
 pub mod perft;
+#[cfg(feature = "std")]
 mod pgn;
 pub mod piece_locations;
 
@@ -379,6 +397,7 @@ impl Board {
     ///     .no_check()
     ///     .many(3);
     /// ```
+    #[cfg(feature = "std")]
     pub fn random() -> RandBoard {
         RandBoard::default()
     }
@@ -2368,6 +2387,7 @@ impl Board {
     }
 
     /// Get Debug Information.
+    #[cfg(feature = "std")]
     pub fn print_debug_info(&self) {
         println!("White Pinners ");
         println!("{}", self.state.pinners_king[0]);
@@ -2393,6 +2413,7 @@ impl Board {
     }
 
     /// Prints a prettified representation of the board.
+    #[cfg(feature = "std")]
     pub fn pretty_print(&self) {
         println!("{}", self.pretty_string());
     }
@@ -2400,6 +2421,7 @@ impl Board {
     /// Print the board alongside useful information.
     ///
     /// Mostly for Debugging usage.
+    #[cfg(feature = "std")]
     pub fn fancy_print(&self) {
         self.pretty_print();
         println!(
@@ -2520,6 +2542,7 @@ impl Board {
     //    }
 }
 
+#[cfg(feature = "std")]
 #[derive(Eq, PartialEq)]
 enum RandGen {
     InCheck,
@@ -2527,6 +2550,7 @@ enum RandGen {
     All,
 }
 
+#[cfg(feature = "std")]
 /// Random [`Board`] generator. Creates either one or many random boards with optional
 /// parameters.
 ///
@@ -2565,6 +2589,7 @@ pub struct RandBoard {
     only_startpos: bool,
 }
 
+#[cfg(feature = "std")]
 impl Default for RandBoard {
     fn default() -> Self {
         RandBoard {
@@ -2578,6 +2603,7 @@ impl Default for RandBoard {
     }
 }
 
+#[cfg(feature = "std")]
 impl RandBoard {
     /// Create a new `RandBoard` object.
     pub fn new() -> Self {
@@ -2726,7 +2752,9 @@ mod tests {
 
     extern crate rand;
     use board::Board;
-    use {BitMove, PieceType, SQ};
+    use BitMove;
+    use PieceType;
+    use SQ;
 
     #[test]
     fn random_move_apply() {

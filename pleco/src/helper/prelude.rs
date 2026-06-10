@@ -11,17 +11,13 @@
 //!
 //! [`Helper`]: ../struct.Helper.html
 
-use super::boards;
-use super::magic;
-use super::psqt;
-use super::zobrist;
+use super::{boards, magic, psqt, zobrist};
 
-use core::score::{Score, Value};
-use {BitBoard, File, Piece, PieceType, Player, Rank, SQ};
+use crate::core::score::{Score, Value};
+use crate::{BitBoard, File, Piece, PieceType, Player, Rank, SQ};
 
-use std::mem;
-use std::sync::atomic::{compiler_fence, fence, AtomicBool, Ordering};
-use std::sync::Once;
+use core::{mem, sync::atomic::{compiler_fence, fence, AtomicBool, Ordering}};
+use spin::Once;
 
 static INITIALIZED: AtomicBool = AtomicBool::new(false);
 

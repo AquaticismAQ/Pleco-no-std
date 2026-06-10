@@ -1,7 +1,9 @@
 extern crate pleco;
 
-use pleco::board::Board;
-use pleco::core::{PieceType, Player};
+use pleco::{
+    board::Board,
+    core::{PieceType, Player},
+};
 
 // https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation
 // "r1bqkbr1/1ppppp1N/p1n3pp/8/1P2PP2/3P4/P1P2nPP/RNBQKBR1 b KQkq -",

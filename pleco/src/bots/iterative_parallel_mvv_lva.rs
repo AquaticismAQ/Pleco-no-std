@@ -1,8 +1,7 @@
 //! The iterative jamboree algorithm.
 use super::*;
 use board::*;
-use core::piece_move::BitMove;
-use core::*;
+use core::{piece_move::BitMove, *};
 use rayon;
 
 const MAX_PLY: u16 = 5;

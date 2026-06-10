@@ -1,9 +1,10 @@
 extern crate pleco;
 
-use pleco::board::{Board, RandBoard};
-use pleco::core::piece_move::*;
-use pleco::core::*;
-use pleco::SQ;
+use pleco::{
+    board::{Board, RandBoard},
+    core::{piece_move::*, *},
+    SQ,
+};
 use std::str::FromStr;
 
 #[test]

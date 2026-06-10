@@ -1,8 +1,7 @@
 extern crate pleco;
 extern crate rand;
 
-use pleco::board::RandBoard;
-use pleco::{BitMove, Board};
+use pleco::{board::RandBoard, BitMove, Board};
 
 trait HashCorrect {
     fn get_hash(board: &Board) -> u64;

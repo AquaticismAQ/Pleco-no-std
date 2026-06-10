@@ -11,10 +11,8 @@ pub mod minimax;
 pub mod parallel_minimax;
 
 use board::Board;
-use core::piece_move::*;
-use core::score::*;
-use tools::eval::*;
-use tools::Searcher;
+use core::{piece_move::*, score::*};
+use tools::{eval::*, Searcher};
 
 const MAX_PLY: u16 = 4;
 const MATE_V: i16 = MATE as i16;

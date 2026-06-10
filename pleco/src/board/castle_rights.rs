@@ -8,11 +8,12 @@
 //!
 //! [`Castling`]: struct.Castling.html
 
-use core::masks::*;
-use core::*;
-use std::fmt;
+use crate::core::{masks::*, *};
+use core::fmt;
 
-use core::sq::SQ;
+use crate::core::sq::SQ;
+
+use ::alloc::{borrow::ToOwned, string::String};
 
 const ALL_CASTLING: u8 = 0b0000_1111;
 

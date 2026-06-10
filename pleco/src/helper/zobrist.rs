@@ -1,6 +1,6 @@
-use core::masks::*;
-use tools::prng::PRNG;
-use {BitBoard, Piece, SQ};
+use crate::core::masks::*;
+use crate::tools::prng::PRNG;
+use crate::{BitBoard, Piece, SQ};
 
 /// Seed for the Zobrist's pseudo-random number generator.
 const ZOBRIST_SEED: u64 = 23_081;

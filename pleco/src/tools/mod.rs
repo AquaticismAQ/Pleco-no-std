@@ -3,13 +3,15 @@
 //! multiple threads. Other useful objects are the `UciLimit` enum and `Searcher` trait
 //! for building bots.
 
+#[cfg(feature = "std")]
 pub mod eval;
 pub mod pleco_arc;
 pub mod prng;
+#[cfg(feature = "std")]
 pub mod tt;
 
-use board::Board;
-use core::piece_move::BitMove;
+use crate::board::Board;
+use crate::core::piece_move::BitMove;
 
 /// Defines an object that can play chess.
 pub trait Searcher {

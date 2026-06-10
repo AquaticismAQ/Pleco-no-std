@@ -13,14 +13,9 @@ pub mod piece_move;
 pub mod score;
 pub mod sq;
 
-use self::bit_twiddles::*;
-use self::bitboard::BitBoard;
-use self::masks::*;
-use self::sq::SQ;
+use self::{bit_twiddles::*, bitboard::BitBoard, masks::*, sq::SQ};
 
-use std::fmt;
-use std::mem;
-use std::ops::Not;
+use core::{fmt, mem, ops::Not};
 
 /// Array of all possible pieces, indexed by their enum value.
 pub const ALL_PIECE_TYPES: [PieceType; PIECE_TYPE_CNT - 2] = [

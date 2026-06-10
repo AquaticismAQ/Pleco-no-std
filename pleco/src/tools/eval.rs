@@ -2,11 +2,7 @@
 //!
 //! This is a VERY basic evaluation, and while decent, it certainly isn't anything exceptional.
 
-use core::bitboard::BitBoard;
-use core::masks::*;
-use core::mono_traits::*;
-use core::score::Value;
-use core::*;
+use core::{bitboard::BitBoard, masks::*, mono_traits::*, score::Value, *};
 use std::i32;
 use Board;
 

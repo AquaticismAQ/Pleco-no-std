@@ -2,8 +2,7 @@ use std::time::Duration;
 
 use criterion::{black_box, Criterion};
 
-use pleco::tools::eval::Eval;
-use pleco::Board;
+use pleco::{tools::eval::Eval, Board};
 
 fn bench_100_evaluations(c: &mut Criterion) {
     c.bench_function("bench_100_evaluations", |b| {

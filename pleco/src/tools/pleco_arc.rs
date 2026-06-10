@@ -3,11 +3,15 @@
 //! This is mostly copied from [servo_arc](https://doc.servo.org/servo_arc/index.html), so see
 //! that documentation for more information.
 
-use std::ops::{Deref, DerefMut};
-use std::ptr::NonNull;
 #[allow(unused_imports)]
-use std::sync::atomic;
-use std::sync::atomic::Ordering::{Acquire, Relaxed, Release};
+use core::sync::atomic;
+use core::{
+    ops::{Deref, DerefMut},
+    ptr::NonNull,
+    sync::atomic::Ordering::{Acquire, Relaxed, Release},
+};
+
+use alloc::boxed::Box;
 
 /// The Inner structure of an `Arc`.
 pub struct ArcInner<T: ?Sized> {

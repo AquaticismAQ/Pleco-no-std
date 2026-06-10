@@ -6,9 +6,7 @@
 //!
 //! We are awaiting the stabilization of `const fn` and constant generics to remove these traits.
 
-use super::bitboard::BitBoard;
-use super::sq::SQ;
-use super::{GenTypes, PieceType, Player};
+use super::{bitboard::BitBoard, sq::SQ, GenTypes, PieceType, Player};
 
 /// Defines a Player Trait, allowing for specific functions in relation
 /// to a certain player.

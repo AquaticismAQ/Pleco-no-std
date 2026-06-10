@@ -1,8 +1,10 @@
 extern crate pleco;
 
-use pleco::board::{Board, RandBoard};
-use pleco::bot_prelude::*;
-use pleco::tools::Searcher;
+use pleco::{
+    board::{Board, RandBoard},
+    bot_prelude::*,
+    tools::Searcher,
+};
 
 #[test]
 fn test_all_bot() {

@@ -61,12 +61,14 @@
 //! on a `Board` that didn't directly create them, unless it is otherwise known that move
 //! correlates to that specific board position.
 
-use std::cmp::{Ord, Ordering, PartialEq, PartialOrd};
-use std::fmt;
-use std::str::FromStr;
+use alloc::{format, string::{String, ToString}};
+use core::{
+    cmp::{Ord, Ordering, PartialEq, PartialOrd},
+    fmt,
+    str::FromStr,
+};
 
-use super::sq::SQ;
-use super::*;
+use super::{sq::SQ, *};
 
 // Castles have the src as the king bit and the dst as the rook
 const SRC_MASK: u16 = 0b0000_000000_111111;

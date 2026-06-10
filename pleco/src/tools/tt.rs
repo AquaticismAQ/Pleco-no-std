@@ -33,14 +33,15 @@
 //! [`TranspositionTable`]: ../../tools/tt/struct.TranspositionTable.html
 //! [`Entry`]: ../../tools/tt/struct.Entry.html
 
-use std::alloc::{self, handle_alloc_error, Layout};
-use std::cell::UnsafeCell;
-use std::cmp::min;
-use std::mem;
-use std::ptr::NonNull;
+use std::{
+    alloc::{self, handle_alloc_error, Layout},
+    cell::UnsafeCell,
+    cmp::min,
+    mem,
+    ptr::NonNull,
+};
 
-use super::prefetch_write;
-use super::PreFetchable;
+use super::{prefetch_write, PreFetchable};
 use core::piece_move::BitMove;
 
 // TODO: investigate potential for SIMD in key lookup
@@ -502,11 +503,9 @@ mod tests {
     extern crate rand;
     use super::*;
 
-    use std::thread::sleep;
-    use std::time::Duration;
+    use std::{thread::sleep, time::Duration};
 
-    use std::sync::atomic::compiler_fence;
-    use std::sync::atomic::Ordering;
+    use std::sync::atomic::{compiler_fence, Ordering};
 
     // around 0.5 GB
     const HALF_GIG: usize = 2 << 24;

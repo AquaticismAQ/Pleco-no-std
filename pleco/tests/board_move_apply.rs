@@ -1,9 +1,10 @@
 extern crate pleco;
 extern crate rand;
 
-use pleco::board::Board;
-use pleco::core::piece_move::BitMove;
-use pleco::core::sq::SQ;
+use pleco::{
+    board::Board,
+    core::{piece_move::BitMove, sq::SQ},
+};
 use std::*;
 
 #[test]

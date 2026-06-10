@@ -3,8 +3,7 @@
 //! A `Value` stores a single `i32` to represent a score. `Score` stores two `i32`s inside of it,
 //! the first to determine the mid-game score, and the second to determine the end-game score.
 
-use std::fmt;
-use std::ops::*;
+use core::{fmt, ops::*};
 
 // TODO: Why is Value an i32 now? Need some notes on why that changed.
 

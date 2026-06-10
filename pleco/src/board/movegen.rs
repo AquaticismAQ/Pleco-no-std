@@ -51,18 +51,17 @@
 //! [`Board`]: ../struct.Board.html
 //! [`Board::legal_move`]: ../struct.Board.html#method.legal_move
 
-use std::hint::unreachable_unchecked;
-use std::mem;
-use std::ops::Index;
-use std::ptr;
+use core::{hint::unreachable_unchecked, mem, ops::Index, ptr};
 
-use board::*;
+use crate::board::*;
 
-use core::mono_traits::GenTypeTrait;
-use core::move_list::{MVPushable, MoveList, ScoringMoveList};
-use core::piece_move::{BitMove, MoveFlag, PreMoveInfo, ScoringMove};
+use crate::core::{
+    mono_traits::GenTypeTrait,
+    move_list::{MVPushable, MoveList, ScoringMoveList},
+    piece_move::{BitMove, MoveFlag, PreMoveInfo, ScoringMove},
+};
 
-use {BitBoard, PieceType, Player, SQ};
+use crate::{BitBoard, PieceType, Player, SQ};
 
 //                   Legal    PseudoLegal
 //         All:  10,172 ns  |  9,636 ns
@@ -160,10 +159,12 @@ impl MoveGen {
     ) where
         <MP as Index<usize>>::Output: Sized,
     {
-        let begin: *mut MP::Output = movelist.list_ptr();
-        let ptr: *mut MP::Output = movelist.over_bounds_ptr();
-        let new_ptr: *mut MP::Output = InnerMoveGen::<MP>::generate::<L, G>(chessboard, ptr);
-        let new_size = (new_ptr as usize - begin as usize) / mem::size_of::<MP::Output>();
+        let begin: *mut <MP as Index<usize>>::Output = movelist.list_ptr();
+        let ptr: *mut <MP as Index<usize>>::Output = movelist.over_bounds_ptr();
+        let new_ptr: *mut <MP as Index<usize>>::Output =
+            InnerMoveGen::<MP>::generate::<L, G>(chessboard, ptr);
+        let new_size = (new_ptr as usize - begin as usize)
+            / mem::size_of::<<MP as Index<usize>>::Output>();
         movelist.unchecked_set_len(new_size);
     }
 
@@ -181,8 +182,8 @@ impl MoveGen {
     #[inline(always)]
     pub unsafe fn extend_from_ptr<L: Legality, G: GenTypeTrait, MP: MVPushable>(
         chessboard: &Board,
-        ptr: *mut MP::Output,
-    ) -> *mut MP::Output
+        ptr: *mut <MP as Index<usize>>::Output,
+    ) -> *mut <MP as Index<usize>>::Output
     where
         <MP as Index<usize>>::Output: Sized,
     {
@@ -194,7 +195,7 @@ impl MoveGen {
 /// references to help generating all possible moves. This structure shouldn't be used
 /// normally.
 struct InnerMoveGen<'a, MP: MVPushable + 'a> {
-    ptr: *mut MP::Output,
+    ptr: *mut <MP as Index<usize>>::Output,
     board: &'a Board,
     occ: BitBoard,
     // Squares occupied by all
@@ -211,8 +212,8 @@ where
     #[inline(always)]
     fn generate<L: Legality, G: GenTypeTrait>(
         chessboard: &Board,
-        movelist: *mut MP::Output,
-    ) -> *mut MP::Output {
+        movelist: *mut <MP as Index<usize>>::Output,
+    ) -> *mut <MP as Index<usize>>::Output {
         match chessboard.turn() {
             Player::White => {
                 InnerMoveGen::<MP>::generate_helper::<L, G, WhiteType>(chessboard, movelist)
@@ -225,7 +226,7 @@ where
 
     // Helper function to setup the MoveGen structure.
     #[inline(always)]
-    fn get_self(chessboard: &'a Board, ptr: *mut MP::Output) -> Self {
+    fn get_self(chessboard: &'a Board, ptr: *mut <MP as Index<usize>>::Output) -> Self {
         InnerMoveGen {
             ptr,
             board: chessboard,
@@ -238,8 +239,8 @@ where
     /// Directly generates the moves.
     fn generate_helper<L: Legality, G: GenTypeTrait, P: PlayerTrait>(
         chessboard: &Board,
-        ptr: *mut MP::Output,
-    ) -> *mut MP::Output {
+        ptr: *mut <MP as Index<usize>>::Output,
+    ) -> *mut <MP as Index<usize>>::Output {
         let mut movegen = InnerMoveGen::<MP>::get_self(chessboard, ptr);
         let gen_type = G::gen_type();
         if gen_type == GenTypes::Evasions {
@@ -654,8 +655,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::{Legal, MoveGen};
-    use board::fen::ALL_FENS;
-    use board::Board;
+    use board::{fen::ALL_FENS, Board};
     use core::mono_traits::AllGenType;
 
     #[test]

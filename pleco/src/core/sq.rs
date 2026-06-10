@@ -52,14 +52,9 @@
 //! when a `SQ::is_okay()` returns false, meaning the square is outside the legal bounds.
 //! If methods are used on a square that is not legal, then undefined behavior will follow.
 
-use super::bitboard::BitBoard;
-use super::masks::*;
-use super::*;
+use super::{bitboard::BitBoard, masks::*, *};
 
-use std::fmt;
-use std::mem::transmute;
-use std::ops::*;
-use std::str::FromStr;
+use core::{fmt, mem::transmute, ops::*, str::FromStr};
 
 // TODO: Investigate possibility of using an Enum instead
 

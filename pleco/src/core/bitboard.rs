@@ -23,18 +23,11 @@
 //!
 //! [`BitBoard`]: struct.BitBoard.html
 
-extern crate rand;
+use super::{bit_twiddles::*, masks::*, sq::SQ, Player};
+use crate::tools::prng::PRNG;
 
-use super::bit_twiddles::*;
-use super::masks::*;
-use super::sq::SQ;
-use super::Player;
-use tools::prng::PRNG;
-
-use std::fmt;
-use std::hint::unreachable_unchecked;
-use std::mem;
-use std::ops::*;
+use core::{fmt, hint::unreachable_unchecked, mem, ops::*};
+use ::alloc::vec::Vec;
 
 /// A `BitBoard` is simply a 64 bit long integer where each
 /// bit maps to a specific square. Used for mapping occupancy, where '1' represents
@@ -407,7 +400,7 @@ impl RandBitBoard {
 
     fn random(&mut self) -> usize {
         if self.seed == 0 {
-            return rand::random::<usize>();
+            return self.prng.rand() as usize;
         }
         self.prng.rand() as usize
     }

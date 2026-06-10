@@ -2,8 +2,7 @@ use std::time::Duration;
 
 use criterion::{black_box, Bencher, Criterion, Fun};
 
-use pleco::board::perft::*;
-use pleco::board::Board;
+use pleco::board::{perft::*, Board};
 
 fn perft_3(b: &mut Bencher, boards: &Vec<Board>) {
     b.iter(|| {

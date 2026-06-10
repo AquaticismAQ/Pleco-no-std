@@ -2,8 +2,7 @@ use std::time::Duration;
 
 use criterion::{black_box, Bencher, Criterion};
 
-use pleco::helper::prelude::*;
-use pleco::{BitBoard, SQ};
+use pleco::{helper::prelude::*, BitBoard, SQ};
 
 fn lookup_tables(c: &mut Criterion) {
     init_statics();

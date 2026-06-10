@@ -1,8 +1,10 @@
 use std::time::Duration;
 
 use criterion::{black_box, Bencher, Criterion, Fun};
-use pleco::core::bit_twiddles::*;
-use pleco::core::bitboard::{BitBoard, RandBitBoard};
+use pleco::core::{
+    bit_twiddles::*,
+    bitboard::{BitBoard, RandBitBoard},
+};
 
 fn popcount_rust(b: &mut Bencher, data: &Vec<BitBoard>) {
     b.iter(|| {

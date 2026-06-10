@@ -8,9 +8,11 @@
 //! See [this Wikipedia article](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation)
 //! for more information.
 
-use super::super::core::sq::NO_SQ;
-use super::{Board, FenBuildError};
-use {BitBoard, PieceType, Player, Rank, SQ};
+use super::{super::core::sq::NO_SQ, Board, FenBuildError};
+use crate::{BitBoard, PieceType, Player, Rank, SQ};
+
+use ::alloc::string::ToString;
+use ::alloc::vec::Vec;
 
 /// The fen string for the start position.
 pub const OPENING_POS_FEN: &str = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";

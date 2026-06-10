@@ -15,9 +15,12 @@
 //! [`MoveList`]: struct.MoveList.html
 //! [`ScoreMoveList`]: struct.MoveList.html
 
-use std::iter::{ExactSizeIterator, FromIterator, FusedIterator, IntoIterator, Iterator};
-use std::ops::{Deref, DerefMut, Index, IndexMut};
-use std::slice;
+use alloc::vec::Vec;
+use core::{
+    iter::{ExactSizeIterator, FromIterator, FusedIterator, IntoIterator, Iterator},
+    ops::{Deref, DerefMut, Index, IndexMut},
+    slice,
+};
 
 use super::piece_move::{BitMove, ScoringMove};
 
@@ -49,14 +52,14 @@ pub trait MVPushable: Sized + IndexMut<usize> + Index<usize> + DerefMut {
     /// # Safety
     ///
     /// Unsafe due to allow modification of elements possibly not inside the length.
-    unsafe fn list_ptr(&mut self) -> *mut Self::Output;
+    unsafe fn list_ptr(&mut self) -> *mut <Self as Index<usize>>::Output;
 
     /// Return a pointer to the element next to the last element in the list.
     ///
     /// # Safety
     ///
     /// Unsafe due to allow modification of elements possibly not inside the length.
-    unsafe fn over_bounds_ptr(&mut self) -> *mut Self::Output;
+    unsafe fn over_bounds_ptr(&mut self) -> *mut <Self as Index<usize>>::Output;
 }
 
 /// The maximum number of moves a `MoveList` or `ScoringMoveList` may contain.
@@ -279,7 +282,7 @@ impl<'a> Iterator for MoveIter<'a> {
     type Item = BitMove;
 
     #[inline]
-    fn next(&mut self) -> Option<Self::Item> {
+    fn next(&mut self) -> Option<<Self as Iterator>::Item> {
         if self.idx >= self.movelist.len {
             None
         } else {
@@ -305,7 +308,7 @@ impl<'a> IntoIterator for &'a MoveList {
     type IntoIter = MoveIter<'a>;
 
     #[inline(always)]
-    fn into_iter(self) -> Self::IntoIter {
+    fn into_iter(self) -> <Self as IntoIterator>::IntoIter {
         MoveIter {
             movelist: self,
             idx: 0,
@@ -557,7 +560,7 @@ impl<'a> Iterator for ScoreMoveIter<'a> {
     type Item = ScoringMove;
 
     #[inline]
-    fn next(&mut self) -> Option<Self::Item> {
+    fn next(&mut self) -> Option<<Self as Iterator>::Item> {
         if self.idx >= self.movelist.len {
             None
         } else {
@@ -583,7 +586,7 @@ impl<'a> IntoIterator for &'a ScoringMoveList {
     type IntoIter = ScoreMoveIter<'a>;
 
     #[inline]
-    fn into_iter(self) -> Self::IntoIter {
+    fn into_iter(self) -> <Self as IntoIterator>::IntoIter {
         ScoreMoveIter {
             movelist: self,
             idx: 0,

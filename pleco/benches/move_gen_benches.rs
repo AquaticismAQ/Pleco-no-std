@@ -2,9 +2,11 @@ use std::time::Duration;
 
 use criterion::{black_box, Bencher, Criterion, Fun};
 
-use pleco::board::movegen::{Legal, Legality, MoveGen, PseudoLegal};
-use pleco::core::mono_traits::*;
-use pleco::Board;
+use pleco::{
+    board::movegen::{Legal, Legality, MoveGen, PseudoLegal},
+    core::mono_traits::*,
+    Board,
+};
 
 fn movegen_ty<L: Legality, G: GenTypeTrait>(b: &mut Bencher, boards: &Vec<Board>) {
     b.iter(|| {

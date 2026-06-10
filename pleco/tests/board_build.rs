@@ -1,11 +1,11 @@
 extern crate pleco;
 
 use self::board::Board;
-use pleco::board;
-use pleco::core::piece_move;
-use pleco::core::piece_move::*;
-use pleco::core::*;
-use pleco::*;
+use pleco::{
+    board,
+    core::{piece_move, piece_move::*, *},
+    *,
+};
 
 #[test]
 fn test_init_counts() {

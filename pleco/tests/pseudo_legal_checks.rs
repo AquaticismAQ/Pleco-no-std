@@ -2,8 +2,7 @@ extern crate pleco;
 
 use std::u16::MAX;
 
-use pleco::board::fen::ALL_FENS;
-use pleco::{BitMove, Board};
+use pleco::{board::fen::ALL_FENS, BitMove, Board};
 
 #[test]
 fn pseudolegal_all_fens() {

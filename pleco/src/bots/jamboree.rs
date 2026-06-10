@@ -1,7 +1,5 @@
 //! The jamboree algorithm.
-use super::alphabeta::alpha_beta_search;
-use super::ScoringMove;
-use super::*;
+use super::{alphabeta::alpha_beta_search, ScoringMove, *};
 use board::*;
 use rayon;
 

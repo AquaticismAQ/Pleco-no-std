@@ -1,10 +1,11 @@
 //! Module for generating chess boards from PGN notation.
 
 //use super::Board;
-use core::sq::SQ;
-use core::{File, PieceType, Rank};
-use std::fmt;
-use std::fmt::{Display, Formatter};
+use core::{sq::SQ, File, PieceType, Rank};
+use std::{
+    fmt,
+    fmt::{Display, Formatter},
+};
 
 //[Event "F/S Return Match"]
 //[Site "Belgrade, Serbia JUG"]

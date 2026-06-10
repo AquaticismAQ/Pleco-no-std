@@ -10,18 +10,26 @@
 //! [`BoardState`]: struct.BoardState.html
 //! [`Board`]: ../struct.Board.html
 
-use super::castle_rights::Castling;
-use super::Board;
+use super::{castle_rights::Castling, Board};
 
-use core::bitboard::BitBoard;
-use core::masks::*;
-use core::piece_move::BitMove;
-use core::score::{Score, Value};
-use core::sq::{NO_SQ, SQ};
-use core::*;
+use core::{
+    *,
+};
 
-use helper::prelude::*;
-use tools::pleco_arc::Arc;
+use crate::core::{
+    bitboard::BitBoard,
+    masks::*,
+    piece_move::BitMove,
+    score::{Score, Value},
+    sq::{NO_SQ, SQ},
+    ALL_PIECE_TYPES,
+    ALL_PLAYERS,
+};
+
+use crate::{Piece, PieceType, Player};
+
+use crate::helper::prelude::*;
+use crate::tools::pleco_arc::Arc;
 
 /// Holds useful information concerning the current state of the [`Board`].
 ///
@@ -247,6 +255,7 @@ impl BoardState {
     /// Iterates through all previous `BoardStates` and prints debug information for each.
     ///
     /// Used primarily for debugging.
+    #[cfg(feature = "std")]
     pub fn backtrace(&self) {
         self.print_info();
         if let Some(ref prev) = self.prev {
@@ -255,6 +264,7 @@ impl BoardState {
     }
 
     /// Prints information about the current `BoardState`.
+    #[cfg(feature = "std")]
     pub fn print_info(&self) {
         print!("ply: {}, move played: {} ", self.ply, self.prev_move);
         if !self.checkers_bb.is_empty() {

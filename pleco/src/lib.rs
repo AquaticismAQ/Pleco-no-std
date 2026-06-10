@@ -62,6 +62,8 @@
 //! [`MoveList`]: core/move_list/struct.MoveList.html
 //! [`Board`]: board/struct.Board.html
 
+#![no_std]
+
 #![cfg_attr(test, allow(dead_code))]
 #![allow(clippy::cast_lossless)]
 #![allow(clippy::unreadable_literal)]
@@ -70,37 +72,46 @@
 #![allow(clippy::missing_safety_doc)]
 #![allow(dead_code)]
 
+extern crate alloc;
+
 #[macro_use]
 extern crate bitflags;
 #[macro_use]
 extern crate lazy_static;
+
+#[cfg(feature = "std")]
 extern crate mucow;
+#[cfg(feature = "std")]
 extern crate num_cpus;
+#[cfg(feature = "std")]
 extern crate rand;
+#[cfg(feature = "std")]
 extern crate rayon;
 
 pub mod board;
+#[cfg(feature = "std")]
 pub mod bots;
 pub mod core;
 pub mod helper;
 pub mod tools;
 
 pub use board::Board;
-pub use core::bitboard::BitBoard;
-pub use core::move_list::{MoveList, ScoringMoveList};
-pub use core::piece_move::{BitMove, ScoringMove};
-pub use core::sq::SQ;
-pub use core::{File, Piece, PieceType, Player, Rank};
+pub use core::{
+    bitboard::BitBoard,
+    move_list::{MoveList, ScoringMoveList},
+    piece_move::{BitMove, ScoringMove},
+    sq::SQ,
+    File, Piece, PieceType, Player, Rank,
+};
 pub use helper::Helper;
 
 pub mod bot_prelude {
     //! Easy importing of all available bots.
-    pub use bots::AlphaBetaSearcher;
-    pub use bots::IterativeSearcher;
-    pub use bots::JamboreeSearcher;
-    pub use bots::MiniMaxSearcher;
-    pub use bots::ParallelMiniMaxSearcher;
-    pub use bots::RandomBot;
+    #[cfg(feature = "std")]
+    pub use bots::{
+        AlphaBetaSearcher, IterativeSearcher, JamboreeSearcher, MiniMaxSearcher,
+        ParallelMiniMaxSearcher, RandomBot,
+    };
 
-    pub use tools::Searcher;
+    pub use crate::tools::Searcher;
 }

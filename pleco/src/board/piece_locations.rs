@@ -5,12 +5,13 @@
 //! [`Board`]: ../struct.Board.html
 //! [`PieceLocations`]: struct.PieceLocations.html
 
-use std::mem;
+use core::mem;
+
+use ::alloc::string::ToString;
+use ::alloc::vec::Vec;
 
 use super::FenBuildError;
-use core::masks::*;
-use core::sq::SQ;
-use core::*;
+use crate::core::{masks::*, sq::SQ, *};
 
 /// Struct to allow fast lookups for any square. Given a square, allows for determining if there
 /// is a piece currently there, and if so, allows for determining it's color and type of piece.

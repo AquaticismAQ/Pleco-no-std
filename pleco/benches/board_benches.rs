@@ -2,8 +2,7 @@ use criterion::{black_box, Criterion};
 use lazy_static;
 use std::time::Duration;
 
-use pleco::tools::prng::PRNG;
-use pleco::{BitMove, Board, MoveList, Player};
+use pleco::{tools::prng::PRNG, BitMove, Board, MoveList, Player};
 
 pub const SEED: u64 = 5363310003543;
 

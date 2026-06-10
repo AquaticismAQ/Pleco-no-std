@@ -3,9 +3,7 @@ use std::time::Duration;
 use criterion::{black_box, Bencher, Criterion, Fun};
 
 use lazy_static;
-use pleco::bot_prelude::*;
-use pleco::tools::Searcher;
-use pleco::Board;
+use pleco::{bot_prelude::*, tools::Searcher, Board};
 
 lazy_static! {
     pub static ref RAND_BOARDS: Vec<Board> = {
