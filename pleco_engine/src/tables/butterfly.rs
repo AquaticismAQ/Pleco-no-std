@@ -1,5 +1,4 @@
-use pleco::core::masks::*;
-use pleco::{BitMove, Player};
+use pleco::{core::masks::*, BitMove, Player};
 use std::ops::{Index, IndexMut};
 
 use super::{NumStatCube, StatBoard};

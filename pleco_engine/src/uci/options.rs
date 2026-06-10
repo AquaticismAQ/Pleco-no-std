@@ -2,8 +2,7 @@
 
 use consts::{DEFAULT_TT_SIZE, MAX_THREADS};
 
-use std::collections::VecDeque;
-use std::option::Option;
+use std::{collections::VecDeque, option::Option};
 
 use num_cpus;
 

@@ -3,9 +3,7 @@ use std::time::Duration;
 
 use pleco::Board;
 
-use pleco_engine::engine::PlecoSearcher;
-use pleco_engine::threadpool::*;
-use pleco_engine::time::uci_timer::PreLimits;
+use pleco_engine::{engine::PlecoSearcher, threadpool::*, time::uci_timer::PreLimits};
 
 use super::*;
 

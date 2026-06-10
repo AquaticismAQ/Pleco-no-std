@@ -7,8 +7,7 @@
 
 use core::mem;
 
-use ::alloc::string::ToString;
-use ::alloc::vec::Vec;
+use ::alloc::{string::ToString, vec::Vec};
 
 use super::FenBuildError;
 use crate::core::{masks::*, sq::SQ, *};

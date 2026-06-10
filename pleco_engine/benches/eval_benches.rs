@@ -1,10 +1,11 @@
 use criterion::{black_box, BatchSize, Bencher, Criterion, Fun};
 use std::time::Duration;
 
-use pleco::core::mono_traits::WhiteType;
-use pleco::{Board, Player};
-use pleco_engine::tables::material::{Material, MaterialEntry};
-use pleco_engine::tables::pawn_table::{PawnEntry, PawnTable};
+use pleco::{core::mono_traits::WhiteType, Board, Player};
+use pleco_engine::tables::{
+    material::{Material, MaterialEntry},
+    pawn_table::{PawnEntry, PawnTable},
+};
 
 use pleco_engine::search::eval::Evaluation;
 

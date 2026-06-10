@@ -1,9 +1,10 @@
-use std::mem;
-use std::ops::{Index, IndexMut};
+use std::{
+    mem,
+    ops::{Index, IndexMut},
+};
 
 use super::{NumStatCube, StatBoard};
-use pleco::core::masks::*;
-use pleco::{Piece, SQ};
+use pleco::{core::masks::*, Piece, SQ};
 
 /// PieceToBoards are addressed by a move's [piece]][to] information
 pub struct PieceToHistory {

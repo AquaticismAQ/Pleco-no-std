@@ -1,11 +1,12 @@
 mod pick;
 
-use std::mem;
-use std::ptr;
+use std::{mem, ptr};
 
-use pleco::board::movegen::{MoveGen, PseudoLegal};
-use pleco::core::mono_traits::*;
-use pleco::helper::prelude::piecetype_value;
+use pleco::{
+    board::movegen::{MoveGen, PseudoLegal},
+    core::mono_traits::*,
+    helper::prelude::piecetype_value,
+};
 #[allow(unused_imports)]
 use pleco::{BitMove, Board, MoveList, PieceType, ScoringMove, ScoringMoveList, SQ};
 
@@ -493,9 +494,10 @@ fn partial_insertion_sort(begin: *mut ScoringMove, end: *mut ScoringMove, limit:
 #[cfg(test)]
 mod tests {
 
-    use std::i16::{MAX, MIN};
-    use std::mem;
-    use std::panic;
+    use std::{
+        i16::{MAX, MIN},
+        mem, panic,
+    };
 
     use super::*;
     use pleco::MoveList;

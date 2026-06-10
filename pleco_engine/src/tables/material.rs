@@ -1,10 +1,14 @@
 //! Table to map from position -> material value;
 
-use pleco::core::masks::{PIECE_TYPE_CNT, PLAYER_CNT};
-use pleco::core::mono_traits::*;
-use pleco::core::score::*;
-use pleco::tools::{prefetch_write, PreFetchable};
-use pleco::{Board, PieceType, Player};
+use pleco::{
+    core::{
+        masks::{PIECE_TYPE_CNT, PLAYER_CNT},
+        mono_traits::*,
+        score::*,
+    },
+    tools::{prefetch_write, PreFetchable},
+    Board, PieceType, Player,
+};
 
 use super::{TableBase, TableBaseConst};
 

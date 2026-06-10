@@ -12,9 +12,7 @@
 
 use super::{castle_rights::Castling, Board};
 
-use core::{
-    *,
-};
+use core::*;
 
 use crate::core::{
     bitboard::BitBoard,
@@ -22,14 +20,12 @@ use crate::core::{
     piece_move::BitMove,
     score::{Score, Value},
     sq::{NO_SQ, SQ},
-    ALL_PIECE_TYPES,
-    ALL_PLAYERS,
+    ALL_PIECE_TYPES, ALL_PLAYERS,
 };
 
 use crate::{Piece, PieceType, Player};
 
-use crate::helper::prelude::*;
-use crate::tools::pleco_arc::Arc;
+use crate::{helper::prelude::*, tools::pleco_arc::Arc};
 
 /// Holds useful information concerning the current state of the [`Board`].
 ///

@@ -2,8 +2,7 @@ extern crate pleco;
 extern crate pleco_engine;
 
 use pleco::Board;
-use pleco_engine::engine::PlecoSearcher;
-use pleco_engine::time::uci_timer::PreLimits;
+use pleco_engine::{engine::PlecoSearcher, time::uci_timer::PreLimits};
 
 pub fn get_move(fen: String, depth: u16) -> String {
     let mut limit = PreLimits::blank();

@@ -11,8 +11,7 @@
 use super::{super::core::sq::NO_SQ, Board, FenBuildError};
 use crate::{BitBoard, PieceType, Player, Rank, SQ};
 
-use ::alloc::string::ToString;
-use ::alloc::vec::Vec;
+use ::alloc::{string::ToString, vec::Vec};
 
 /// The fen string for the start position.
 pub const OPENING_POS_FEN: &str = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";

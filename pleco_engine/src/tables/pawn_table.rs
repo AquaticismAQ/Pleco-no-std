@@ -6,14 +6,18 @@
 
 use std::mem::transmute;
 
-use pleco::board::castle_rights::Castling;
-use pleco::core::masks::{PLAYER_CNT, RANK_CNT};
-use pleco::core::mono_traits::*;
-use pleco::core::score::*;
-use pleco::core::CastleType;
-use pleco::helper::prelude::*;
-use pleco::tools::{prefetch_write, PreFetchable};
-use pleco::{BitBoard, Board, File, Piece, PieceType, Player, Rank, SQ};
+use pleco::{
+    board::castle_rights::Castling,
+    core::{
+        masks::{PLAYER_CNT, RANK_CNT},
+        mono_traits::*,
+        score::*,
+        CastleType,
+    },
+    helper::prelude::*,
+    tools::{prefetch_write, PreFetchable},
+    BitBoard, Board, File, Piece, PieceType, Player, Rank, SQ,
+};
 
 use super::{TableBase, TableBaseConst};
 

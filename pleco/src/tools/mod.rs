@@ -10,8 +10,7 @@ pub mod prng;
 #[cfg(feature = "std")]
 pub mod tt;
 
-use crate::board::Board;
-use crate::core::piece_move::BitMove;
+use crate::{board::Board, core::piece_move::BitMove};
 
 /// Defines an object that can play chess.
 pub trait Searcher {

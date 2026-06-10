@@ -2,36 +2,32 @@
 
 pub mod eval;
 
-use std::cell::UnsafeCell;
-use std::cmp::{max, min};
-use std::mem;
-use std::ptr;
-use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
+use std::{
+    cell::UnsafeCell,
+    cmp::{max, min},
+    mem, ptr,
+    sync::atomic::{AtomicBool, AtomicU64, Ordering},
+};
 
-use pleco::core::piece_move::MoveType;
-use pleco::core::score::*;
-use pleco::core::*;
-use pleco::helper::prelude::*;
-use pleco::tools::pleco_arc::Arc;
-use pleco::tools::tt::*;
-use pleco::tools::PreFetchable;
-use pleco::{BitMove, Board, SQ};
+use pleco::{
+    core::{piece_move::MoveType, score::*, *},
+    helper::prelude::*,
+    tools::{pleco_arc::Arc, tt::*, PreFetchable},
+    BitMove, Board, SQ,
+};
 //use pleco::board::movegen::{MoveGen,PseudoLegal};
 //use pleco::core::mono_traits::{QuietChecksGenType};
 
-use {MAX_PLY, THREAD_STACK_SIZE};
+use MAX_PLY;
+use THREAD_STACK_SIZE;
 
 use consts::*;
 use movepick::MovePicker;
-use root_moves::root_moves_list::RootMoveList;
-use root_moves::RootMove;
+use root_moves::{root_moves_list::RootMoveList, RootMove};
 use sync::{GuardedBool, LockLatch};
-use tables::material::Material;
-use tables::pawn_table::PawnTable;
-use tables::prelude::*;
+use tables::{material::Material, pawn_table::PawnTable, prelude::*};
 use threadpool::threadpool;
-use time::time_management::TimeManager;
-use time::uci_timer::*;
+use time::{time_management::TimeManager, uci_timer::*};
 
 const RAZORING_MARGIN: i32 = 590;
 

@@ -1,5 +1,4 @@
-use pleco::core::masks::*;
-use pleco::{Piece, PieceType, SQ};
+use pleco::{core::masks::*, Piece, PieceType, SQ};
 use std::ops::{Index, IndexMut};
 
 use super::{NumStatCube, StatBoard};

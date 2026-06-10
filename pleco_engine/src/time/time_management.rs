@@ -5,9 +5,7 @@ use chrono;
 use super::uci_timer::UCITimer;
 use pleco::Player;
 
-use std::cell::UnsafeCell;
-use std::f64;
-use std::time::Instant;
+use std::{cell::UnsafeCell, f64, time::Instant};
 
 const MOVE_HORIZON: i64 = 50;
 const MAX_RATIO: f64 = 6.32;

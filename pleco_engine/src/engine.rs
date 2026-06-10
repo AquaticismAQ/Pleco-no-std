@@ -1,16 +1,16 @@
 //! The main searching structure.
 
-use std::io;
-use std::sync::atomic::Ordering;
+use std::{io, sync::atomic::Ordering};
 
-use pleco::BitMove;
-use pleco::Board;
+use pleco::{BitMove, Board};
 
 use consts::*;
 use threadpool::threadpool;
 use time::uci_timer::PreLimits;
-use uci::options::{OptionWork, OptionsMap};
-use uci::parse;
+use uci::{
+    options::{OptionWork, OptionsMap},
+    parse,
+};
 
 use search::eval::Evaluation;
 

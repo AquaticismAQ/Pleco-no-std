@@ -61,7 +61,10 @@
 //! on a `Board` that didn't directly create them, unless it is otherwise known that move
 //! correlates to that specific board position.
 
-use alloc::{format, string::{String, ToString}};
+use alloc::{
+    format,
+    string::{String, ToString},
+};
 use core::{
     cmp::{Ord, Ordering, PartialEq, PartialOrd},
     fmt,

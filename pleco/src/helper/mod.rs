@@ -18,8 +18,10 @@ pub mod prelude;
 mod psqt;
 mod zobrist;
 
-use crate::core::score::{Score, Value};
-use crate::{BitBoard, File, Piece, Player, Rank, SQ};
+use crate::{
+    core::score::{Score, Value},
+    BitBoard, File, Piece, Player, Rank, SQ,
+};
 
 /// Helper structure for accessing statically-initialized tables and other constants.
 ///

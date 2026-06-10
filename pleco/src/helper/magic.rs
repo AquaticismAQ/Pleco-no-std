@@ -1,10 +1,11 @@
 use core::{mem, ptr};
 
-use crate::core::masks::*;
-use crate::SQ;
+use crate::{core::masks::*, SQ};
 
-use crate::core::{bit_twiddles::popcount64, file_bb, rank_bb};
-use crate::tools::prng::PRNG;
+use crate::{
+    core::{bit_twiddles::popcount64, file_bb, rank_bb},
+    tools::prng::PRNG,
+};
 
 /// Size of the magic rook table.
 const ROOK_M_SIZE: usize = 102_400;

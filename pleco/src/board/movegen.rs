@@ -163,8 +163,8 @@ impl MoveGen {
         let ptr: *mut <MP as Index<usize>>::Output = movelist.over_bounds_ptr();
         let new_ptr: *mut <MP as Index<usize>>::Output =
             InnerMoveGen::<MP>::generate::<L, G>(chessboard, ptr);
-        let new_size = (new_ptr as usize - begin as usize)
-            / mem::size_of::<<MP as Index<usize>>::Output>();
+        let new_size =
+            (new_ptr as usize - begin as usize) / mem::size_of::<<MP as Index<usize>>::Output>();
         movelist.unchecked_set_len(new_size);
     }
 

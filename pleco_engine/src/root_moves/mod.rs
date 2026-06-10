@@ -5,8 +5,7 @@ pub mod root_moves_list;
 
 use std::cmp::Ordering as CmpOrder;
 
-use pleco::core::score::*;
-use pleco::BitMove;
+use pleco::{core::score::*, BitMove};
 
 // 250 as this fits into 64 byte cache lines easily.
 const MAX_MOVES: usize = 250;

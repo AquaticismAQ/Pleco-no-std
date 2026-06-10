@@ -1,5 +1,7 @@
-use crate::core::{file_idx_of_sq, file_of_sq, masks::*, rank_idx_of_sq, u8_to_u64};
-use crate::{File, Player, Rank, SQ};
+use crate::{
+    core::{file_idx_of_sq, file_of_sq, masks::*, rank_idx_of_sq, u8_to_u64},
+    File, Player, Rank, SQ,
+};
 
 use super::magic::{bishop_attacks, rook_attacks};
 

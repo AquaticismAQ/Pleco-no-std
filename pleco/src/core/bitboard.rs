@@ -26,8 +26,8 @@
 use super::{bit_twiddles::*, masks::*, sq::SQ, Player};
 use crate::tools::prng::PRNG;
 
-use core::{fmt, hint::unreachable_unchecked, mem, ops::*};
 use ::alloc::vec::Vec;
+use core::{fmt, hint::unreachable_unchecked, mem, ops::*};
 
 /// A `BitBoard` is simply a 64 bit long integer where each
 /// bit maps to a specific square. Used for mapping occupancy, where '1' represents

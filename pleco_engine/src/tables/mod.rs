@@ -5,19 +5,23 @@ pub mod counter_move;
 pub mod material;
 pub mod pawn_table;
 
-use std::alloc::{alloc_zeroed, dealloc, Layout};
-use std::mem;
-use std::ops::*;
-use std::ptr;
-use std::ptr::NonNull;
+use std::{
+    alloc::{alloc_zeroed, dealloc, Layout},
+    mem,
+    ops::*,
+    ptr,
+    ptr::NonNull,
+};
 
 pub mod prelude {
     // easier exporting :)
-    pub use super::butterfly::ButterflyHistory;
-    pub use super::capture_piece_history::CapturePieceToHistory;
-    pub use super::continuation::{ContinuationHistory, PieceToHistory};
-    pub use super::counter_move::CounterMoveHistory;
-    pub use super::{NumStatBoard, NumStatCube, StatBoard};
+    pub use super::{
+        butterfly::ButterflyHistory,
+        capture_piece_history::CapturePieceToHistory,
+        continuation::{ContinuationHistory, PieceToHistory},
+        counter_move::CounterMoveHistory,
+        NumStatBoard, NumStatCube, StatBoard,
+    };
 }
 
 // TODO: Create StatBoards using const generics: https://github.com/rust-lang/rust/issues/44580

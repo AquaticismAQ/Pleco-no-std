@@ -63,7 +63,6 @@
 //! [`Board`]: board/struct.Board.html
 
 #![no_std]
-
 #![cfg_attr(test, allow(dead_code))]
 #![allow(clippy::cast_lossless)]
 #![allow(clippy::unreadable_literal)]

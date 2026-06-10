@@ -1,9 +1,10 @@
-use std::iter::{ExactSizeIterator, FusedIterator, IntoIterator, Iterator};
-use std::mem;
-use std::ops::{Deref, DerefMut, Index, IndexMut};
-use std::ptr;
-use std::slice;
-use std::sync::atomic::{AtomicUsize, Ordering};
+use std::{
+    iter::{ExactSizeIterator, FusedIterator, IntoIterator, Iterator},
+    mem,
+    ops::{Deref, DerefMut, Index, IndexMut},
+    ptr, slice,
+    sync::atomic::{AtomicUsize, Ordering},
+};
 
 use super::{RootMove, MAX_MOVES};
 use pleco::{BitMove, MoveList};

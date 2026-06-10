@@ -1,18 +1,20 @@
 //! Contains the ThreadPool and the individual Threads.
 
-use std::alloc::{alloc_zeroed, dealloc, Layout};
-use std::cell::UnsafeCell;
-use std::mem::MaybeUninit;
-use std::ptr::NonNull;
-use std::sync::atomic::{AtomicBool, Ordering};
-use std::sync::Once;
-use std::thread::{self, JoinHandle};
-use std::{mem, ptr};
+use std::{
+    alloc::{alloc_zeroed, dealloc, Layout},
+    cell::UnsafeCell,
+    mem,
+    mem::MaybeUninit,
+    ptr,
+    ptr::NonNull,
+    sync::{
+        atomic::{AtomicBool, Ordering},
+        Once,
+    },
+    thread::{self, JoinHandle},
+};
 
-use pleco::board::*;
-use pleco::core::piece_move::BitMove;
-use pleco::tools::pleco_arc::Arc;
-use pleco::MoveList;
+use pleco::{board::*, core::piece_move::BitMove, tools::pleco_arc::Arc, MoveList};
 
 use search::Searcher;
 use sync::LockLatch;

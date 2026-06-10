@@ -2,18 +2,19 @@
 //!
 //!
 //!
-use std::fmt;
-use std::mem;
+use std::{fmt, mem};
 
-use pleco::core::masks::*;
-use pleco::core::mono_traits::*;
-use pleco::core::score::*;
-use pleco::{BitBoard, Board, File, Piece, PieceType, Player, Rank, SQ};
+use pleco::{
+    core::{masks::*, mono_traits::*, score::*},
+    BitBoard, Board, File, Piece, PieceType, Player, Rank, SQ,
+};
 
 use pleco::helper::prelude::*;
 
-use tables::material::*;
-use tables::pawn_table::{PawnEntry, PawnTable};
+use tables::{
+    material::*,
+    pawn_table::{PawnEntry, PawnTable},
+};
 
 const CENTER: BitBoard = BitBoard((FILE_D | FILE_E) & (RANK_4 | RANK_5));
 const QUEEN_SIDE: BitBoard = BitBoard(FILE_A | FILE_B | FILE_C | FILE_D);

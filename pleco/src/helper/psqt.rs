@@ -1,5 +1,7 @@
-use crate::core::{masks::*, score::*};
-use crate::{File, Piece, Player, SQ};
+use crate::{
+    core::{masks::*, score::*},
+    File, Piece, Player, SQ,
+};
 
 const BONUS: [[[Score; (FILE_CNT / 2)]; RANK_CNT]; PIECE_TYPE_CNT] = [
     [

@@ -18,30 +18,35 @@ use core::{
     option::*,
 };
 
-use ::alloc::format;
-use ::alloc::{string::{String, ToString}, vec::Vec};
+use ::alloc::{
+    format,
+    string::{String, ToString},
+    vec::Vec,
+};
 
 #[cfg(feature = "std")]
 use rand;
 
+use crate::{
+    core::{
+        bitboard::BitBoard,
+        masks::*,
+        mono_traits::*,
+        move_list::{MoveList, ScoringMoveList},
+        piece_move::{BitMove, MoveType},
+        score::*,
+        sq::{NO_SQ, SQ},
+        *,
+    },
+    helper::{prelude::*, Helper},
+    tools::{
+        pleco_arc::{Arc, UniqueArc},
+        prng::PRNG,
+        PreFetchable,
+    },
+};
 #[cfg(feature = "std")]
 use bot_prelude::AlphaBetaSearcher;
-use crate::core::{
-    bitboard::BitBoard,
-    masks::*,
-    mono_traits::*,
-    move_list::{MoveList, ScoringMoveList},
-    piece_move::{BitMove, MoveType},
-    score::*,
-    sq::{NO_SQ, SQ},
-    *,
-};
-use crate::helper::{prelude::*, Helper};
-use crate::tools::{
-    pleco_arc::{Arc, UniqueArc},
-    prng::PRNG,
-    PreFetchable,
-};
 
 #[cfg(feature = "std")]
 use crate::tools::Searcher;

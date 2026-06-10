@@ -1,13 +1,14 @@
 //! Constant values and static structures.
-use std::mem::MaybeUninit;
-use std::ptr;
-use std::sync::atomic::compiler_fence;
-use std::sync::atomic::AtomicBool;
-use std::sync::atomic::Ordering;
-use std::sync::Once;
+use std::{
+    mem::MaybeUninit,
+    ptr,
+    sync::{
+        atomic::{compiler_fence, AtomicBool, Ordering},
+        Once,
+    },
+};
 
-use pleco::helper::prelude;
-use pleco::tools::tt::TranspositionTable;
+use pleco::{helper::prelude, tools::tt::TranspositionTable};
 
 use search;
 use tables::pawn_table;
