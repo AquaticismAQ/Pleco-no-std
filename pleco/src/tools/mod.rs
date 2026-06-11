@@ -56,9 +56,9 @@ pub fn prefetch_write<T>(ptr: *const T) {
 #[inline(always)]
 fn __prefetch_write<T>(ptr: *const T) {
     #[cfg(target_arch = "x86")]
-    use std::arch::x86::_mm_prefetch;
+    use core::arch::x86::_mm_prefetch;
     #[cfg(target_arch = "x86_64")]
-    use std::arch::x86_64::_mm_prefetch;
+    use core::arch::x86_64::_mm_prefetch;
     unsafe {
         _mm_prefetch(ptr as *const i8, 3);
     }
